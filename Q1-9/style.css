@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fef9e3;
+  font-family: "Montserrat";
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+table {
+  border-collapse: collapse;
+  background-color: white;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0.5rem 2rem;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+}
+
+th {
+  border: 1px solid black;
+  padding: 0.5rem 2rem;
+  background-color: #2d2d2d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+tr:nth-child(even) {
+  background-color: #b9b9b9;
+}
+
+.addictional-data {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  position: fixed;
+  top: 150px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  opacity: 1;
+  padding: 2rem;
+  font-size: 1.5rem;
+  opacity: 0;
+}
+
+.addictional-data.active {
+  opacity: 1;
+}

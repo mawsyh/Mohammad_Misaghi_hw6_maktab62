@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="main-container">
+        <table>
+            <thead>
+                <tr>
+                    <th id="row">Row</th>
+                    <th id="uid" onclick="sortByHead('uid')">UID</th>
+                    <th id="first-name" onclick="sortByHead('firstName')">First Name</th>
+                    <th id="last-name" onclick="sortByHead('lastName')">Last Name</th>
+                    <th id="position" onclick="sortByHead('position')">Position</th>
+                    <th id="city" onclick="sortByHead('city')">City</th>
+                </tr>
+            </thead>
+            <tbody id="table-data"></tbody>
+        </table>
+        <span class="addictional-data"></span>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>

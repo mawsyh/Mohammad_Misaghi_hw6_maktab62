@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.pages {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  top: 40vh;
+  cursor: pointer;
+}
+
+.circle-nav {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 0.2rem solid #fff;
+  margin: 5px;
+  position: relative;
+}
+
+.circle-nav:hover {
+  border: 0.1rem solid #fff;
+  transition: 0.3s ease;
+}
+
+.circle-nav-added::before,
+.circle-nav-added::after {
+  content: "";
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 100%;
+  width: 0px;
+  height: 0px;
+  transform: translate(-50%, -50%);
+}
+
+.blue {
+  background-color: #82a5ce;
+}
+
+.green {
+  background-color: #00b894;
+}
+
+.red {
+  background-color: #e84393;
+}
+
+.orange {
+  background-color: #f4544cc7;
+}
+
+.purple {
+  background-color: #a29bfe;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-title {
+  border: 1px solid #fff;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  background-color: transparent;
+  padding: 1rem 0;
+  width: 800px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.product-title:hover {
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.blue .product-title:hover {
+  color: #82a5ce;
+}
+
+.red .product-title:hover {
+  color: #e84393;
+}
+
+.orange .product-title:hover {
+  color: #f4544cc7;
+}
+
+.green .product-title:hover {
+  color: #00b894;
+}
+
+.purple .product-title:hover {
+  color: #a29bfe;
+}
+
+.pic {
+  width: 600px;
+}
+
+.disc {
+  margin: 0 2rem;
+  text-align: center;
+  color: white;
+}
+
+.disc p {
+  width: 800px;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  text-align: left;
+}
+
+.disc button {
+  margin: 1rem;
+}

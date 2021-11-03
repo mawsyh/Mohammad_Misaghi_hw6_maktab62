@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;600&family=Montserrat:wght@200;400;600&family=Tajawal:wght@200;400;800&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background-color: #d8dede;
+  background-image: linear-gradient(315deg, #d8dede 0%, #e5bdf6 74%);
+  font-family: "Tajawal";
+}
+
+.main-container {
+  margin: 200px auto;
+  width: 400px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  text-align: right;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.signup-form div {
+  margin: auto;
+}
+
+.signup-form input {
+  margin: 10px auto;
+  padding-right: 10px;
+  width: 340px;
+  height: 50px;
+  border: 2px solid #d07bfa;
+  border-radius: 5px;
+  text-align: right;
+  font-family: "Tajawal";
+  font-size: 1.1rem;
+}
+
+.signup-form input::placeholder {
+  text-align: right;
+  font-family: "Tajawal";
+  font-size: 0.8rem;
+  padding-right: 10px;
+  color: #cc7df3;
+}
+
+.signup-form input:focus {
+  outline: none;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.signup-form input:focus::placeholder {
+  color: transparent;
+}
+
+.signup-button {
+  background-color: #d065fd;
+  color: #fff;
+  font-family: "Tajawal";
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  margin: 20px auto;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  box-shadow: 0 0 10px 4px rgba(213, 114, 252, 0.26);
+  transition: 0.3s ease;
+}
+
+.wrong {
+  border: 2px solid red !important;
+}
+
+.wrong::placeholder {
+  color: red !important;
+}
+
+.signup-form p {
+  font-size: 0.7rem;
+  width: 95%;
+  margin-top: -3px;
+}
+
+.successfull {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -150px auto;
+  width: 320px;
+  height: 100px;
+  background-color: #55efc4;
+  color: white;
+  border: 2px solid #1fb395;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.successfull.active {
+  opacity: 1;
+  transition: 0.3s ease;
+}

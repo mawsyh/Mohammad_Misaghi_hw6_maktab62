@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <span class="parent">Parent node's text.
+            <span class="main">The target node
+                <div class="child">The main node's child node</div>
+            </span>
+        </span>
+        <div class="button-container">
+            <button class="copy-parent" focus="none">Copy Parent Text</button>
+            <button class="copy-child">Copy Child Text</button>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>

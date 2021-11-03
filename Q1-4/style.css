@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fef9e3;
+  font-family: "Poppins";
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 1000px;
+  height: 600px;
+  border: 2px solid black;
+  margin: 80px auto 10px auto;
+  padding: 1rem;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-container {
+  overflow: auto;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 0.8rem;
+  text-align: center;
+  color: grey;
+}
+
+.heading {
+  color: red;
+}
+
+.main-tasks {
+  list-style: lower-roman;
+  margin: 1rem 3rem;
+}
+
+.main-tasks li {
+  padding: 0.2rem;
+  cursor: pointer;
+}
+
+.child-tasks {
+  margin: 0 2rem;
+}
+
+#task-input {
+  width: 400px;
+  padding: 0.3rem;
+}
+
+#task-add {
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
+
+#subtask-add {
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+}
