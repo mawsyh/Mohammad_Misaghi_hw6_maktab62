@@ -20,6 +20,7 @@ body {
 table {
   border-collapse: collapse;
   background-color: white;
+  cursor: pointer;
 }
 
 td {
@@ -27,7 +28,6 @@ td {
   padding: 0.5rem 2rem;
   font-weight: 400;
   text-align: center;
-  cursor: pointer;
 }
 
 th {
@@ -36,27 +36,52 @@ th {
   background-color: #2d2d2d;
   color: white;
   font-weight: 600;
-  cursor: pointer;
 }
 
 tr:nth-child(even) {
   background-color: #b9b9b9;
 }
 
-.addictional-data {
-  width: 400px;
+.additional-data {
+  width: 600px;
   height: 400px;
-  background-color: white;
+  background-color: rgb(198, 248, 252);
   position: fixed;
   top: 150px;
   box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   opacity: 1;
-  padding: 2rem;
+  padding: 3rem 2rem 1rem 2rem;
   font-size: 1.5rem;
   opacity: 0;
+  pointer-events: none;
 }
 
-.addictional-data.active {
+.additional-data p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: rgb(19, 7, 46);
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 3px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.additional-data.active {
   opacity: 1;
+  pointer-events: all;
+}
+
+.additional-data.active i {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.remove {
+  position: absolute;
 }
