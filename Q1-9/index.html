@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="main-container">
-        <table>
+        <table id="main-table" class="active">
             <thead>
                 <tr>
                     <th id="uid" onclick="sortByHead('uid')">UID</th>
@@ -23,6 +23,29 @@
             <tbody id="table-data"></tbody>
         </table>
         <span class="additional-data"></span>
+        <span class="editing-data"></span>
+    </div>
+    <table class="tools-table">
+        <tr>
+            <tr>
+                <th>Add new row</th>
+                <th>More info</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Done</th>
+            </tr>
+            <tr>
+                <td><i id="new-row" class="fas fa-plus-square">&nbsp;&nbsp;&nbsp;&nbsp;<i id="add-row" class="fas fa-check"></i></i></td>
+                <td id="more-info"><i class="fas fa-info-circle"></i></td>
+                <td id="edit"><i class="fas fa-edit"></i></td>
+                <td id="delete"><i class="fas fa-trash-alt"></i></i></td>
+                <td id="done"><i class="fas fa-check-circle"></i></td>
+            </tr>
+        </tr>
+    </table>
+    <div class="hints">
+        <p>click on the Tool and then on the data</p>
+        <p>click on the check button when you are done</p>
     </div>
     <script src="./app.js"></script>
 </body>

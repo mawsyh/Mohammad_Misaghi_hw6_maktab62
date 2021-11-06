@@ -5,7 +5,9 @@ const firstNameEl = document.getElementById("first-name");
 const lastNameEl = document.getElementById("last-name");
 const positionEl = document.getElementById("position");
 const cityEl = document.getElementById("city");
-const dataPanel = document.querySelector(".additional-data");
+const dataSection = document.querySelector(".additional-data");
+const editSection = document.querySelector(".editing-data");
+const mainTable = document.getElementById("main-table");
 
 let personData = [
   {
@@ -59,15 +61,16 @@ function dataLoader(personData) {
   for (let person of personData) {
     tableMakerHtml += `
       <tr id="satr">
-        <td id="data">${person.uid}</td>  
+        <td id="data">${person.uid}</td>
         <td id="data">${person.firstName}</td>    
         <td id="data">${person.lastName}</td> 
         <td id="data">${person.position}</td> 
-        <td id="data">${person.city}</td>
-        <i class="fas fa-times-circle remove"></i></tr>`;
+        <td id="data" class="lastData">${person.city}</td>
+        </tr>`;
     i++;
   }
   tableEl.innerHTML = tableMakerHtml;
+  mainTable.classList.remove("active");
 }
 dataLoader(personData);
 
@@ -87,37 +90,170 @@ function sortByHead(headerName) {
   }
   dataLoader(personData);
   popUp();
+  remove();
 }
 
 //pop up the data on screen when clicked on a single data
 function popUp() {
+  const moreInfoBtn = document.querySelector("#more-info");
   const dataEl = document.querySelectorAll("#data");
-  dataEl.forEach((element) =>
-    element.addEventListener("click", () => {
-      for (let person of personData) {
-        let data;
-        if (element.innerHTML.length === 1) data = Number(element.innerHTML);
-        else data = element.innerHTML;
-        if (Object.values(person).includes(data)) {
-          let popUp = document.createElement("div");
-          popUp.innerHTML = `
-      <i class="fas fa-times"></i>
+  moreInfoBtn.addEventListener("click", () => {
+    mainTable.classList.add("active");
+    dataEl.forEach((element) =>
+      element.addEventListener("click", () => {
+        for (let person of personData) {
+          let data;
+          if (element.innerHTML.length === 1) data = Number(element.innerHTML);
+          else data = element.innerHTML;
+          if (Object.values(person).includes(data)) {
+            let popUp = document.createElement("div");
+            dataSection.innerHTML = `<i class="fas fa-times"></i>`;
+            popUp.innerHTML = `
       <p>Uid: ${person.uid}</p>
       <p>First Name: ${person.firstName}</p>
       <p>Last Name: ${person.lastName}</p>
       <p>Position: ${person.position}</p>
       <p>City: ${person.city}</p>
       `;
-          dataPanel.classList.add("active");
-          dataPanel.appendChild(popUp);
+            dataSection.classList.add("active");
+            dataSection.appendChild(popUp);
+          }
         }
-      }
-      const closeBtn = document.querySelector(".fa-times");
-      closeBtn.addEventListener("click", () => {
-        dataPanel.classList.remove("active");
-        dataPanel.innerHTML = ``;
-      });
-    })
-  );
+        const closeBtn = document.querySelector(".fa-times");
+        closeBtn.addEventListener("click", () => {
+          dataSection.classList.remove("active");
+          dataSection.innerHTML = ``;
+        });
+      })
+    );
+  });
 }
 popUp();
+
+//deleting a row
+function remove() {
+  const deleteBtn = document.querySelector("#delete");
+  const dataEl = document.querySelectorAll("#data");
+  deleteBtn.addEventListener("click", () => {
+    mainTable.classList.add("active");
+    dataEl.forEach((element) =>
+      element.addEventListener("click", () => {
+        for (let personIndex in personData) {
+          let data;
+          if (element.innerHTML.length === 1) data = Number(element.innerHTML);
+          else data = element.innerHTML;
+          if (Object.values(personData[personIndex]).includes(data)) {
+            personData.splice(personIndex, 1);
+            dataLoader(personData);
+          }
+        }
+      })
+    );
+  });
+}
+remove();
+
+//editing a row
+function edit() {
+  const editBtn = document.querySelector("#edit");
+  const dataEl = document.querySelectorAll("#data");
+  editBtn.addEventListener("click", () => {
+    mainTable.classList.add("active");
+    dataEl.forEach((element) =>
+      element.addEventListener("click", () => {
+        for (let person of personData) {
+          let data;
+          if (element.innerHTML.length === 1) data = Number(element.innerHTML);
+          else data = element.innerHTML;
+          if (Object.values(person).includes(data)) {
+            let editPanel = document.createElement("div");
+            editSection.innerHTML = `<i class="fas fa-times"></i>`;
+            let editingData = Object.keys(person).find(
+              (key) => person[key] === data
+            );
+            editPanel.innerHTML = `<p>This person "${editingData}" should be changed to:</p>
+            <br>
+            <input id="changing-value" type="text">
+            <button id="submit-btn" type="submit">Change it!</button>
+            `;
+            editSection.classList.add("active");
+            editSection.appendChild(editPanel);
+            const changingValue = document.getElementById("changing-value");
+            const submitBtn = document.getElementById("submit-btn");
+            submitBtn.addEventListener("click", () => {
+              person[editingData] = changingValue.value;
+              editSection.classList.remove("active");
+              editSection.innerHTML = ``;
+              dataLoader(personData);
+            });
+          }
+        }
+        const closeBtn = document.querySelector(".fa-times");
+        closeBtn.addEventListener("click", () => {
+          editSection.classList.remove("active");
+          editSection.innerHTML = ``;
+        });
+      })
+    );
+  });
+}
+edit();
+
+//add new uid
+function addNewRow() {
+  const newRowBtn = document.getElementById("new-row");
+  newRowBtn.addEventListener("click", () => {
+    let newRowHtml;
+    newRowHtml = `<tr id="newSatr">
+    <td id="input"><input id="new-uid" class="new-row" type="text"></td>
+    <td id="input"><input id="new-firstname" class="new-row" type="text"></td>    
+    <td id="input"><input id="new-lastname" class="new-row" type="text"></td> 
+    <td id="input"><input id="new-position" class="new-row" type="text"></td> 
+    <td id="input""><input id="new-city" class="new-row" type="text"></td>
+    </tr>`;
+    tableEl.innerHTML += newRowHtml;
+    const newUid = document.getElementById("new-uid");
+    const newFirstName = document.getElementById("new-firstname");
+    const newLastName = document.getElementById("new-lastname");
+    const newPosition = document.getElementById("new-position");
+    const newCity = document.getElementById("new-city");
+    const addBtn = document.querySelector("#add-row");
+    addBtn.addEventListener("click", () => {
+      let uidsArray = [];
+      for (let person of personData) {
+        uidsArray.push(Object.values(person)[0]);
+      }
+      if (
+        uidsArray.includes(Number(newUid.value)) &&
+        Number(newUid.value) !== 0
+      ) {
+        alert("This uid is already in table");
+      } else if (Number(newUid.value) !== 0) {
+        uidsArray.push(Number(newUid.value));
+        let newPerson = {};
+        newPerson["uid"] = Number(newUid.value);
+        newPerson["firstName"] = newFirstName.value;
+        newPerson["lastName"] = newLastName.value;
+        newPerson["position"] = newPosition.value;
+        newPerson["city"] = newCity.value;
+        personData.push(newPerson);
+        dataLoader(personData);
+        newUid.value = ``;
+      }
+    });
+  });
+}
+addNewRow();
+
+function done() {
+  const doneBtn = document.querySelector("#done");
+  doneBtn.addEventListener("click", () => {
+    dataLoader(personData);
+    popUp();
+    remove();
+    edit();
+    done();
+    addNewRow();
+  });
+}
+done();
